@@ -1,0 +1,20 @@
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+
+server-->browser: HTML-code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+
+note over browser:
+when window is loaded the redrawNotes() javascript creates an unordered list (ul)
+and adds each note as a list element (li)
+The list is then appended to the notesElement in the DOM. Notes are then visible in the browser
+end note
