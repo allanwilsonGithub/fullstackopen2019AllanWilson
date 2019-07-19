@@ -1,0 +1,57 @@
+This code can be displayed using https://www.websequencediagrams.com/:
+
+
+
+TODO
+
+
+
+
+
+
+note over browser:
+user enters text into the form element text field
+end note
+
+note over browser:
+user clicks the Save button
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note    [{ Form Data: "Some text" }]
+
+note over server:
+server adds new note object to notes array
+and issues HTTP redirect status code to browser
+end note
+
+server->browser: HTTP status code 302
+
+note over browser:
+browser re-requests the Notes page.
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+
+server-->browser: HTML-code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+
+note over server:
+the new note is included in data.json returned by the server
+end note
+
+server-->browser: [{ content: "Some text", date: "2019-06-30" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
