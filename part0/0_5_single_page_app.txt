@@ -1,6 +1,7 @@
 This code can be displayed using https://www.websequencediagrams.com/
 
 
+
 browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
 
 server-->browser: HTML-code
