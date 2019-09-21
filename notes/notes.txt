@@ -1,0 +1,10 @@
+JSX
+The layout of React components is mostly written using JSX. Although JSX looks like HTML, we are actually dealing with a way to write JavaScript.
+Under the hood, JSX returned by React components is compiled into JavaScript.
+
+root component called App at the top of the component tree of the application
+
+React component names must be capitalized : 'footer' not good. 'Footer' good
+
+A React component (usually) needs to contain one root element. Example the component App needs an enclosing div-element wrapping everything.
+This can be avoided by using fragments, i.e. by wrapping the elements to be returned by the component with an empty element: <>  < />
