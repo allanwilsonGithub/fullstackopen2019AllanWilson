@@ -8,3 +8,8 @@ React component names must be capitalized : 'footer' not good. 'Footer' good
 
 A React component (usually) needs to contain one root element. Example the component App needs an enclosing div-element wrapping everything.
 This can be avoided by using fragments, i.e. by wrapping the elements to be returned by the component with an empty element: <>  < />
+
+Browsers do not yet support all of Javascript's newest features. Due to this fact, a lot of code run in browsers has been transpiled from a newer version of Javascript to an older, more compatible version.
+Today, the most popular way to do the transpiling is using Babel
+
+Node.js is a Javascript runtime environment based on Google's chrome V8 Javascript engine
