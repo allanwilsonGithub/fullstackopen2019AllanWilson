@@ -13,3 +13,9 @@ Browsers do not yet support all of Javascript's newest features. Due to this fac
 Today, the most popular way to do the transpiling is using Babel
 
 Node.js is a Javascript runtime environment based on Google's chrome V8 Javascript engine
+
+in this course we avoid issues by using the "this-less" Javascript.
+
+There are several mechanisms by which the original this can be preserved. One of these is using a method called bind:
+
+When the state modifying function setCounter is called, React re-renders the component which means that the function body of the component function gets re-executed:
