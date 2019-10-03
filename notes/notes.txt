@@ -19,3 +19,25 @@ in this course we avoid issues by using the "this-less" Javascript.
 There are several mechanisms by which the original this can be preserved. One of these is using a method called bind:
 
 When the state modifying function setCounter is called, React re-renders the component which means that the function body of the component function gets re-executed:
+
+LEARN: React Hooks: usestate / useEffect
+
+conditional rendering (based on state)
+
+STATE:
+Hooks may only be called from the inside of a function body that defines a React component:
+
+const App = (props) => {
+  // these are ok
+  const [age, setAge] = useState(0)
+  const [name, setName] = useState('Juha Tauriainen')
+
+  if ( age > 10 ) {
+    // this does not work!
+    const [foobar, setFoobar] = useState(null)
+  }
+
+DEBUGGING:
+console.log()
+Chrome developer console's debugger, by writing the command debugger anywhere in your code.
+new React developer tools tab can be used to inspect the different React elements in the application, along with their state and props (Components and profiler tabs)
