@@ -15,6 +15,7 @@ const App = () => {
   const handleGoodClick = () => {
       setGood(good + 1)
       incrementAll()
+      updateAverage()
   }
 
   const handleNeutralClick = () => {
@@ -25,12 +26,19 @@ const App = () => {
   const handleBadClick = () => {
       setBad(bad + 1)
       incrementAll()
+      updateAverage()
   }
 
   const incrementAll = () => {
       setAll(all + 1)
   }
 
+  const updateAverage = () => {
+    console.table(good , bad, all)
+    setAverage (
+      (good - bad) / all
+    )
+  }
 
   return (
     <div>
@@ -39,6 +47,7 @@ const App = () => {
       <button onClick={handleGoodClick}>Good</button>
       <button onClick={handleNeutralClick}>Neutral</button>
       <button onClick={handleBadClick}>Bad</button>
+      <button onClick={updateAverage}>Ave</button>
       <h1>Statistics</h1>
       <p>Good {good}</p>
       <p>Neutral {neutral}</p>
