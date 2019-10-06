@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const Statistic = (props) => {
+  return (
+    <p>{props.text} {props.value}</p>
+  )
+}
+
 const Statistics = (props) => {
   if ((props.good + props.neutral + props.bad) === 0) {
      return (
@@ -9,13 +15,13 @@ const Statistics = (props) => {
   } else {  
     return (
       <div>
-        <p>Good {props.good}</p>
-        <p>Neutral {props.neutral}</p>
-        <p>Bad {props.bad}</p>
+        <Statistic text="Good" value ={props.good} />
+        <Statistic text="Neutral" value ={props.neutral} />
+        <Statistic text="Bad" value ={props.bad} />
         <hr></hr>
-        <p>All {props.good + props.neutral + props.bad}</p>
-        <p>Average {(props.good - props.bad) / (props.good + props.neutral + props.bad)}</p>
-        <p>Positive {props.good / (props.good + props.neutral + props.bad)}</p>
+        <Statistic text="All" value ={props.good + props.neutral + props.bad} />
+        <Statistic text="Average" value ={(props.good - props.bad) / (props.good + props.neutral + props.bad)} />
+        <Statistic text="Positive" value ={props.good / (props.good + props.neutral + props.bad)} />
       </div>
   )
 }
