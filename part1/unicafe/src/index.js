@@ -8,37 +8,20 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  const [all, setAll] = useState(0)
-  const [average, setAverage] = useState(0)
-  const [positive, setPositive] = useState(0)
 
   const handleGoodClick = () => {
       setGood(good + 1)
-      incrementAll()
-      updateAverage()
   }
 
   const handleNeutralClick = () => {
       setNeutral(neutral + 1)
-      incrementAll()
   }
 
   const handleBadClick = () => {
       setBad(bad + 1)
-      incrementAll()
-      updateAverage()
   }
 
-  const incrementAll = () => {
-      setAll(all + 1)
-  }
 
-  const updateAverage = () => {
-    console.table(good , bad, all)
-    setAverage (
-      (good - bad) / all
-    )
-  }
 
   return (
     <div>
@@ -47,15 +30,14 @@ const App = () => {
       <button onClick={handleGoodClick}>Good</button>
       <button onClick={handleNeutralClick}>Neutral</button>
       <button onClick={handleBadClick}>Bad</button>
-      <button onClick={updateAverage}>Ave</button>
       <h1>Statistics</h1>
       <p>Good {good}</p>
       <p>Neutral {neutral}</p>
       <p>Bad {bad}</p>
       <hr></hr>
-      <p>All {all}</p>
-      <p>Average {average}</p>
-      <p>Positive {positive}</p>
+      <p>All {good + neutral + bad}</p>
+      <p>Average {(good - bad) / (good + neutral + bad)}</p>
+      <p>Positive {good / (good + neutral + bad)}</p>
     </div>
   )
 }
