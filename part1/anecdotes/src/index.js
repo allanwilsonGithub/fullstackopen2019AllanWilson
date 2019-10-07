@@ -11,11 +11,18 @@ const App = (props) => {
     console.log(selected)
   }
 
+  const addVoteForAnecdote = () => {
+    votes[selected]++ 
+  }
+
   return (
     <div>
       {props.anecdotes[selected]}
+      <p>.. has {votes[selected]} votes.</p>
+      <button onClick={addVoteForAnecdote}>Vote for this anecdote ...</button>
       <br></br>
       <button onClick={changeAnecdote}>Next anecdote ...</button>
+
     </div>
   )
 }
@@ -28,6 +35,9 @@ const anecdotes = [
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
+
+const votes = Array(anecdotes.length).fill(0)
+console.log(votes)
 
 ReactDOM.render(
   <App anecdotes={anecdotes} />,
