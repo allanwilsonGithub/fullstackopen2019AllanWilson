@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Course from './course'
+import Course from './components/course'
 
 const Courses = ({ courses }) => courses.map((course, i) =>
   <ul key={course.id}>
