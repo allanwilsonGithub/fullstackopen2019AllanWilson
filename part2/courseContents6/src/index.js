@@ -18,28 +18,15 @@ const Content = ({ parts }) => parts.map((part, i) =>
   <ul key={part.id}>
     {part.name} {part.exercises}
   </ul>
-)
+) 
 
-//Get array of excercises
-const Total = ({ parts }) => parts.map((part, i) => {
-    console.log(parts[i].exercises)  
-    return parts[i].exercises
-    }
-)
-
-const TotalReduced = ({ parts }) => {
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  return ([parts[0].exercises,parts[1].exercises,parts[2].exercises,parts[1].exercises].reduce(reducer));
-  }
-
-
-/*
-#reduce the array by adding each element
-
-#show the html
-<p>Number of exercises {total}</p>
-
-*/
+const Total = ({ parts }) => (
+  <p>Total excercises: { 
+  parts
+  .map(p => p.exercises)
+  .reduce((a, c) => a + c)
+  }</p>
+  )
 
 const App = () => {
   const course = {
@@ -64,6 +51,11 @@ const App = () => {
         name: 'If it all blows up',
         exercises: 24,
         id: 4
+      },
+      {
+        name: 'Progressing slowly',
+        exercises: 15,
+        id: 5
       }
 
     ]
