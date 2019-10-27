@@ -20,19 +20,26 @@ const Content = ({ parts }) => parts.map((part, i) =>
   </ul>
 )
 
+//Get array of excercises
 const Total = ({ parts }) => parts.map((part, i) => {
-    return (
-      <p>Number of exercises {part.exercises}</p>
-    )
-  }
-
+    console.log(parts[i].exercises)  
+    return parts[i].exercises
+    }
 )
 
-const total = parts.reduce( (s, p) => {
-  console.log('what is happening', s, p)
-  return someMagicHere
-})
+const TotalReduced = ({ parts }) => {
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  return ([parts[0].exercises,parts[1].exercises,parts[2].exercises,parts[1].exercises].reduce(reducer));
+  }
 
+
+/*
+#reduce the array by adding each element
+
+#show the html
+<p>Number of exercises {total}</p>
+
+*/
 
 const App = () => {
   const course = {
