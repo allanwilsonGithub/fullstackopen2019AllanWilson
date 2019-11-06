@@ -14,7 +14,7 @@ const App = () => {
 
   const addPerson = (event) => {
       event.preventDefault()
-      if (persons.indexOf('name' === newName) > 0) {
+      if (typeof (persons.find(x => x.name === newName)) != "undefined") {
           window.alert(`${newName} already exists in the phonebook`)
       } else {
           setPersons([...persons, { name: newName, number: newNumber }])
