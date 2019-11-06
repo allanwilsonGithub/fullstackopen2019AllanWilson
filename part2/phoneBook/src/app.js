@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import DisplayNames from './components/displayNames'
+import Filter from './components/filter'
+import PersonForm from './components/personForm'
 
 const App = () => {
   const [ persons, setPersons] = useState([
@@ -34,35 +36,22 @@ const App = () => {
       setNewNumber(event.target.value)
   }
 
+
   return (
     <div>
       <h2>Phonebook</h2>
-        <div>
-          filter shown with:  <input
-          value={newFilterString}
-          onChange={handleFilterChange}
-          />
-        </div>
-      <h2>add a new...</h2>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input
-          value={newName}
-          onChange={handleNameChange}
-          />
-        </div>
-        <div>
-          number: <input
-          value={newNumber}
-          onChange={handleNumberChange}
-          />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+
+      <Filter newFilterString={newFilterString}  handleFilterChange={handleFilterChange} />
+
+      <h3>Add a new...</h3>
+
+      <PersonForm addPerson={addPerson} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber}
+      handleNumberChange={handleNumberChange} />
+
       <h2>Numbers</h2>
+
       <DisplayNames persons={persons} newFilterString={newFilterString}/>
+
     </div>
   )
 }
