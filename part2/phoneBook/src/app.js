@@ -25,8 +25,11 @@ const App = () => {
           window.alert(`${newName} already exists in the phonebook`)
       } else {
           setPersons([...persons, { name: newName, number: newNumber }])
+          personsService
+      .updatePersons({ name: newName, number: newNumber })
       }
   }
+
 
   const handleFilterChange = (event) => {
       setNewFilterString(event.target.value)
