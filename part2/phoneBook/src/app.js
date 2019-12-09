@@ -26,10 +26,10 @@ const App = () => {
       } else {
           setPersons([...persons, { name: newName, number: newNumber }])
           personsService
-      .updatePersons({ name: newName, number: newNumber })
+          .updatePersons({ name: newName, number: newNumber })
+          .then(updatePersonsFromDb)
       }
   }
-
 
   const handleFilterChange = (event) => {
       setNewFilterString(event.target.value)
@@ -43,6 +43,12 @@ const App = () => {
       setNewNumber(event.target.value)
   }
 
+  const updatePersonsFromDb = () => {
+    personsService
+      .getAll()
+      .then(response => {
+        setPersons(response)
+      })}
 
   return (
     <div>
@@ -57,7 +63,7 @@ const App = () => {
 
       <h2>Numbers</h2>
 
-      <DisplayNames persons={persons} newFilterString={newFilterString}/>
+      <DisplayNames persons={persons} updatePersonsFromDb={updatePersonsFromDb} newFilterString={newFilterString}/>
 
     </div>
   )
