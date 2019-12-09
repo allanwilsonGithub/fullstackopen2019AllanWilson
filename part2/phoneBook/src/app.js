@@ -6,10 +6,10 @@ import personsService from './services/persons'
 
 const App = () => {
   const [ persons, setPersons] = useState([])
-
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilterString, setNewFilterString ] = useState('')
+  const [ errorMessage, setErrorMessage ] = useState(null)
 
   useEffect(() => {
     personsService
@@ -28,6 +28,12 @@ const App = () => {
           personsService
           .updatePersons({ name: newName, number: newNumber })
           .then(updatePersonsFromDb)
+          setErrorMessage(
+          `${newName} was added to the phonebook`
+        )
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 3000)
       }
   }
 
@@ -50,9 +56,23 @@ const App = () => {
         setPersons(response)
       })}
 
+  const Notification = ({ message }) => {
+    if (message === null) {
+    return null
+  }
+
+  return (
+    <div className="error">
+      {message}
+    </div>
+  )
+}
+
   return (
     <div>
       <h2>Phonebook</h2>
+
+      <Notification message={errorMessage} />
 
       <Filter newFilterString={newFilterString}  handleFilterChange={handleFilterChange} />
 
