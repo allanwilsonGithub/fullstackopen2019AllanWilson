@@ -11,10 +11,11 @@ const updatePersons = newPerson => {
   return request.then(response => response.data)
 }
 
-const deletePerson = ( IDtoDelete , name, updatePersonsFromDb) => {
+const deletePerson = ( IDtoDelete , name, persons, setPersons) => {
   if (window.confirm(`Delete ${name}?`)) {
   const request = axios.delete(`${baseUrl}/${IDtoDelete}`)
-  return request.then(response => response.data).then(updatePersonsFromDb)
+  setPersons(persons.filter(person => person.id !== IDtoDelete))
+  return request.then(response => response.data)
 }}
 
 export default { getAll , updatePersons , deletePerson }

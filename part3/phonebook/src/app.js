@@ -27,7 +27,6 @@ const App = () => {
           setPersons([...persons, { name: newName, number: newNumber }])
           personsService
           .updatePersons({ name: newName, number: newNumber })
-          .then(updatePersonsFromDb)
           setErrorMessage(
           `${newName} was added to the phonebook`
         )
@@ -49,13 +48,6 @@ const App = () => {
       setNewNumber(event.target.value)
   }
 
-  const updatePersonsFromDb = () => {
-    personsService
-      .getAll()
-      .then(response => {
-        setPersons(response)
-      })}
-
   const Notification = ({ message }) => {
     if (message === null) {
     return null
@@ -70,7 +62,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h2>Phonebook 123</h2>
 
       <Notification message={errorMessage} />
 
@@ -83,7 +75,7 @@ const App = () => {
 
       <h2>Numbers</h2>
 
-      <DisplayNames persons={persons} updatePersonsFromDb={updatePersonsFromDb} newFilterString={newFilterString}/>
+      <DisplayNames persons={persons} setPersons={setPersons} newFilterString={newFilterString}/>
 
     </div>
   )
